@@ -1,0 +1,56 @@
+name: Validate skills
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+      - '.claude/commands/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Every skill folder must have SKILL.md
+        run: |
+          failed=0
+          for dir in skills/*/; do
+            name=$(basename "$dir")
+            if [ ! -f "$dir/SKILL.md" ]; then
+              echo "FAIL: $name is missing SKILL.md"
+              failed=1
+            else
+              echo "OK:   $name"
+            fi
+          done
+          exit $failed
+
+      - name: SKILL.md must have name and description frontmatter
+        run: |
+          failed=0
+          for f in skills/*/SKILL.md; do
+            name=$(dirname "$f" | xargs basename)
+            grep -q "^name:"        "$f" || { echo "FAIL: $name missing 'name:'";        failed=1; }
+            grep -q "^description:" "$f" || { echo "FAIL: $name missing 'description:'"; failed=1; }
+          done
+          exit $failed
+
+      - name: Warn if SKILL.md exceeds 500 lines
+        run: |
+          for f in skills/*/SKILL.md; do
+            name=$(dirname "$f" | xargs basename)
+            lines=$(wc -l < "$f")
+            [ "$lines" -gt 500 ] && echo "WARN: $name is $lines lines — move depth to references/" || echo "OK:   $name ($lines lines)"
+          done
+
+      - name: Referenced files must exist
+        run: |
+          failed=0
+          for f in skills/*/SKILL.md; do
+            dir=$(dirname "$f")
+            grep -oP "references/[\w\-\.]+\.md" "$f" | while read ref; do
+              [ ! -f "$dir/$ref" ] && { echo "FAIL: $f references '$ref' — file not found"; failed=1; }
+            done
+          done
+          exit $failed
