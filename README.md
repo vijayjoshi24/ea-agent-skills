@@ -1,6 +1,6 @@
 # EA Agent Skills
 
-**Production-grade Enterprise Architecture skills for AI agents.**
+**Enterprise Architecture skills for AI agents.**
 
 Skills encode the workflows, quality gates, and frameworks that senior Enterprise Architects
 use when discovering, designing, deciding, reviewing, and communicating architecture.
@@ -61,7 +61,7 @@ and integrates with Stripe and Azure Service Bus.
 ```
 /decide
 We're choosing between GraphQL and REST for our new partner API.
-Consumers are external partners with varying technical capability.
+Consumers are external partners with varying technical capabilities.
 ```
 
 ```
@@ -175,9 +175,7 @@ Fast paths:
 
 ## About
 
-Built by **Vijay Joshi** — Director of Enterprise Architecture with 15+ years across
-financial services (credit cards, wealth management, capital markets). Currently defining
-enterprise reference architectures for agentic AI in a regulated FS environment.
+Built by **Vijay Joshi** — Director of Enterprise Architecture with 20+ years across financial services (credit cards, wealth management, capital markets, retail banking).
 
 
 ---
