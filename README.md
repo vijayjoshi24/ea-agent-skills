@@ -4,7 +4,7 @@
 
 Skills encode the workflows, quality gates, and frameworks that senior Enterprise Architects
 use when discovering, designing, deciding, reviewing, and communicating architecture.
-Packaged so AI agents follow them consistently — across every engagement.
+Packaged so AI agents follow them consistently - across every engagement.
 
 ```
   DISCOVER        DESIGN          DECIDE          REVIEW          PRESENT
@@ -48,7 +48,7 @@ claude .
 **Paste into Claude.ai**
 
 Open any skill's `SKILL.md` and paste it at the start of your conversation. The skill
-activates immediately — no installation needed.
+activates immediately - no installation needed.
 
 **Use a slash command**
 
@@ -109,7 +109,7 @@ hit a Next.js frontend, which calls a FastAPI backend, which reads from
 Postgres and publishes events to Kafka. External: Stripe for billing, 
 SendGrid for email.
 ```
-→ Agent renders a C4 Context diagram. Click any element to drill into Container level.
+→ Agent renders a C4 Context diagram. Click any element to drill into the Container level.
 
 **Write an ADR**
 ```
